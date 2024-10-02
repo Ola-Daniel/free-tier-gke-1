@@ -105,7 +105,7 @@ variable "enable_private_endpoint" {
 variable "enable_private_nodes" {
   description = "Nodes only have private IPs and communicate to master via private networking."
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "master_ipv4_cidr_block" {
