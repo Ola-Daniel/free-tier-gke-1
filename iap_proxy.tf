@@ -32,6 +32,11 @@ resource "google_compute_instance" "iap-proxy" {
   name         = "gke-iap-proxy"
   machine_type = "e2-micro"
   zone         = var.zone
+  lifecycle {
+    ignore_changes = [
+      metadata,
+    ]
+  }
 
   tags = ["iap"]
 
