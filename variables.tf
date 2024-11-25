@@ -381,7 +381,7 @@ variable "image_type" {
 variable "initial_node_count" {
   description = "The initial number of nodes in the pool.  For regional or multi-zonal clusters, this is the number of nodes PER zone."
   type        = number
-  default     = 1
+  default     = 2
 }
 
 variable "min_nodes" {

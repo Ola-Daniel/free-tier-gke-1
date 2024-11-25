@@ -9,6 +9,8 @@ resource "google_compute_subnetwork" "iap" {
   region                   = var.region
 }
 
+
+
 resource "google_compute_firewall" "iap_tcp_forwarding" {
   count   = var.enable_private_endpoint ? 1 : 0
   name    = "allow-ingress-from-iap"
@@ -20,6 +22,8 @@ resource "google_compute_firewall" "iap_tcp_forwarding" {
     protocol = "tcp"
     ports    = ["22", "8888"] # 8888 = tinyproxy port
   }
+
+  
 
   # https://cloud.google.com/iap/docs/using-tcp-forwarding
   source_ranges = data.google_netblock_ip_ranges.iap-forwarders.cidr_blocks_ipv4

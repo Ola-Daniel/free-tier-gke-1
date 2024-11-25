@@ -59,6 +59,19 @@ resource "google_compute_subnetwork" "psc" {
 #------------------------------
 # Firewalls
 #------------------------------
+
+resource "google_compute_firewall" "allow-db-conn" {
+  name    = "allow-egress-to-db"
+  network = google_compute_network.k8s.name
+
+  direction = "EGRESS"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["15827"] 
+  }
+}
+
 resource "google_compute_firewall" "lb_health_check" {
   name        = "allow-health-check"
   network     = google_compute_network.k8s.name

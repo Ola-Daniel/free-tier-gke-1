@@ -1,0 +1,16 @@
+gcloud projects add-iam-policy-binding elated-ranger-437411-v6 \
+  --member=serviceAccount:gha-sa@elated-ranger-437411-v6.iam.gserviceaccount.com \
+  --role=roles/container.admin
+gcloud projects add-iam-policy-binding elated-ranger-437411-v6 \
+  --member=serviceAccount:gha-sa@elated-ranger-437411-v6.iam.gserviceaccount.com \
+  --role=roles/storage.admin
+gcloud projects add-iam-policy-binding elated-ranger-437411-v6 \
+  --member=serviceAccount:gha-sa@elated-ranger-437411-v6.iam.gserviceaccount.com \
+  --role=roles/container.clusterViewer
+
+  gcloud iam service-accounts keys create key.json --iam-account=gha-sa@elated-ranger-437411-v6.iam.gserviceaccount.com
+
+gcloud artifacts repositories add-iam-policy-binding danieloo \
+    --location=northamerica-northeast1 \
+    --member=serviceAccount:gha-sa@elated-ranger-437411-v6.iam.gserviceaccount.com \
+    --role="roles/artifactregistry.reader"
